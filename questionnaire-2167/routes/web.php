@@ -15,14 +15,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/create', function () {
-    return view('create');
+
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+    Route::resource('/admin/questionnaire', 'QuestionnaireController' );
 });
 
-Route::get('/questionnaire', function () {
-    return view('questionnaire');
-});
+Auth::routes();
 
-Route::get('/home', function () {
-    return view('home');
-});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/create', 'questionnaireControl@create')->name('create');
+
+Route::get('/questionnaire', 'questionControl@questionnaire')->name('questionnaire');

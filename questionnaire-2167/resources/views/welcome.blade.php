@@ -100,7 +100,7 @@
 
             <div class="container">
                 <h1 class="header">Create Your Own Questionnaire</h1>
-                <a href="{{ route('/web/home') }}" class="button">Create now</a>
+                <a href="" class="button">Create now</a>
             </div>
         </div>
     </body>
